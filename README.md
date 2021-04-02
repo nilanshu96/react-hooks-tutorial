@@ -40,4 +40,4 @@ Basically, if we're going to update both the counts together for most of the tim
 
 ### The place where useState shines
 
-useState can be used to construct custom hooks which can be used anywhere independent of the component. Take a look at [App.js](./App.js). Here we make use of the custom hook useForm to keep track of the email and password state. The useForm can now be used for any form in any component. A good alternative to using a custom Form parent class.
+useState can be used to construct **custom hooks** which can be used anywhere independent of the component. Take a look at [App.js](./App.js). Here we make use of the custom hook useForm to keep track of the email and password state. The useForm can now be used for any form in any component. A good alternative to using a custom Form parent class.
