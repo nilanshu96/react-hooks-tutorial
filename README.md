@@ -34,3 +34,5 @@ let [count1, setCount] = useState(10);
 let [count2, setCount] = useState(20);
 ```
 For the above the class equivalent state would be `this.state = {count1: 10, count2: 20}`
+
+Basically, if we're going to update both the counts together for most of the time it's better to pass a combined object to useState than to keep them separate like above but it's just a matter of preference.
