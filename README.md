@@ -50,3 +50,4 @@ useState can be used to construct **custom hooks** which can be used anywhere in
 * This is because even though the value will be disregarded in subsequent renders, func will still be called in each rerender
 * So to avoid this use `useState(() => func(params))` if func requires params or use `useState(func)` if the function func doesn't require any params
 * This way the function func will only be called once in the initial render
+* Check [App.js](https://github.com/nilanshu96/react-hooks-tutorial/blob/useEffect/src/App.js) for a simple example
