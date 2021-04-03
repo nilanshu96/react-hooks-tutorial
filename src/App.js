@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import useForm from './useForm';
 import Hello from './Hello';
+import useFetch from './useFetch';
 
 import './App.css';
 
@@ -8,6 +9,8 @@ function App() {
 
   const [values, handleChange] = useForm({ email: "", password: "", firstName: "" });
   const [showHellow, toggleHello] = useState(true);
+
+  useFetch('http://numbersapi.com/42');
 
   useEffect(() => {
     console.log("render");
