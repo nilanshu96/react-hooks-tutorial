@@ -41,3 +41,12 @@ Basically, if we're going to update both the counts together for most of the tim
 ### The place where useState shines
 
 useState can be used to construct **custom hooks** which can be used anywhere independent of the component. Take a look at [App.js](./src/App.js). Here we make use of the custom hook useForm to keep track of the email and password state. The useForm can now be used for any form in any component. A good alternative to using a custom Form parent class.
+
+
+### More info on using initializer function in useState
+* useState can be called in two ways: `useState(initialValue)` or `useState(() => initialValue)`. The second way is called lazy initialization.
+* The argument passed to useState is the initial state. This value initializes the state in the first render but is regarded in subsequent renders.
+* If the initialValue needs to be computed using a function, using `useState(func())` can cause unwanted use of resources
+* This is because even though the value will be disregarded in subsequent renders, func will still be called in each rerender
+* So to avoid this use `useState(() => func(params))` if func requires params or use `useState(func)` if the function func doesn't require any params
+* This way the function func will only be called once in the initial render
