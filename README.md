@@ -9,3 +9,5 @@
 7. To call a cleanup function only while unmounting, pass an empty array
 8. Effects are a good place to add and remove event Listeners
 9. There can be more than one useEffect in a component and they'll be fired off in their lexical order that's top to bottom
+10. useEffect can also be used to carry out complex task like fetching data and updating when it's available. See [App.js](./src/App.js) to see a working example.
+11. useEffect is also a good place to save variables into disk or memory for future use. See [App.js](./src/App.js) for a simple usecase.
