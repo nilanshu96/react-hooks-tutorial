@@ -1,7 +1,7 @@
 # Notes on React Hooks
 
 1. [useState](https://github.com/nilanshu96/react-hooks-tutorial/tree/useState)
-2. useEffect
+2. [useEffect](https://github.com/nilanshu96/react-hooks-tutorial/tree/useEffect)
 3. useRef
 4. useLayoutEffect
 5. useCallback
