@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import useForm from './useForm';
 import Hello from './Hello';
 import useFetch from './useFetch';
@@ -18,6 +18,8 @@ function App() {
   //using initiator function in useState because we don't want to call JSON.parse in every rerenders
   // const [count, setCount] = useState(getInitialValue()); This calls the getInitialValue function in every rerender.
 
+  const inputRef = useRef();
+
   useEffect(() => {
     localStorage.setItem("count", JSON.stringify(count));
   }, [count]);
@@ -35,7 +37,7 @@ function App() {
     <div className="App">
       {showHellow && <Hello />}
       <button onClick={() => toggleHello(!showHellow)}>Toggle Hello</button>
-      Email: <input name="email" value={values.email} onChange={handleChange}></input>
+      Email: <input ref={inputRef} name="email" value={values.email} onChange={handleChange}></input>
       First Name: <input name="firstName" value={values.firstName} onChange={handleChange}></input>
       Password: <input type="password" name="password" value={values.password} onChange={handleChange}></input>
       <div>
@@ -43,6 +45,7 @@ function App() {
       </div>
       <p>{!data && loading ? "...loading" : data} </p>
       <button onClick={() => setCount(count+1)}>increment</button>
+      <button onClick={() => inputRef.current.focus()}>focus</button>
     </div>
   );
 }
