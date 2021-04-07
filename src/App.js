@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef, useLayoutEffect } from 'react';
 import useForm from './useForm';
 import Hello from './Hello';
 
@@ -11,6 +11,10 @@ function App() {
 
   const inputRef = useRef();
   const hello = useRef(() => console.log('hello'));
+
+  useLayoutEffect(() => {
+    // console.log(inputRef.current.getBoundingClientRect());
+  }, []);
 
   useEffect(() => {
     console.log("render");

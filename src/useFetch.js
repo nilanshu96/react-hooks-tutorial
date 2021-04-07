@@ -17,12 +17,7 @@ const useFetch = (url) => {
         fetch(url)
             .then(resp => resp.text())
             .then(text => {
-                //This is to show a memory leak scenario when hello gets unmounted from App.js but the setState action gets taken place after Hello has unmounted.
-                setTimeout(() => {
-                    if (isCurrent.current) { //This check can prevent memory leak
-                        setState({ data: text, loading: false });
-                    }
-                }, 2000);
+                setState({ data: text, loading: false });
             })
             .catch(console.log)
     }, [url]);
