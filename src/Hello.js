@@ -1,12 +1,11 @@
-import { useEffect } from 'react';
+import { useRef } from 'react';
 
 const Hello = () => {
     
-    useEffect(() => {
-        return () => {
-            console.log("hello unmounted");
-        }
-    }, []);
+    const renders = useRef(0);
+
+    console.log("hello renders: " + renders.current);
+    renders.current++;
     
     return (
         <div>Hello</div>
