@@ -6,3 +6,4 @@
 4. To get a ref of a component use something like this: `<div ref={refContainer}>`. This would store the div component into the refContainer.
 5. Updating the .current value would never cause a rerender
 6. The refContainer would exist for the full life time of a component
+7. Check [useFetch.js](./src/useFetch.js) for a scenario where useRef can be used to prevent memory leaks
