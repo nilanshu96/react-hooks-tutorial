@@ -4,7 +4,7 @@
 2. [useEffect](https://github.com/nilanshu96/react-hooks-tutorial/tree/useEffect)
 3. [useRef](https://github.com/nilanshu96/react-hooks-tutorial/tree/useRef)
 4. [useLayoutEffect](https://github.com/nilanshu96/react-hooks-tutorial/tree/useLayoutEffect)
-5. useCallback
+5. [useCallback](https://github.com/nilanshu96/react-hooks-tutorial/tree/useCallback)
 6. useMemo
 7. useReducer
 8. useContext
