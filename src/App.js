@@ -1,48 +1,31 @@
-import { useEffect, useState } from 'react';
-import useForm from './useForm';
+import { useState, useCallback } from 'react';
 import Hello from './Hello';
-import useFetch from './useFetch';
+import Square from './Square';
 
 import './App.css';
 
 function App() {
 
-  function getInitialValue() {
-    console.log('func called');
-    return JSON.parse(localStorage.getItem("count")||0);
-  }
+  const [count, setCount] = useState(0);
 
-  const [values, handleChange] = useForm({ email: "", password: "", firstName: "" });
-  const [showHellow, toggleHello] = useState(true);
-  const [count, setCount] = useState(getInitialValue); //same as useState(() => JSON.parse(localStorage.getItem("count")||0))
-  //using initiator function in useState because we don't want to call JSON.parse in every rerenders
-  // const [count, setCount] = useState(getInitialValue()); This calls the getInitialValue function in every rerender.
+  const nums = [25, 50, 75];
 
-  useEffect(() => {
-    localStorage.setItem("count", JSON.stringify(count));
-  }, [count]);
+  const increment = useCallback((n) => {
+    setCount(c => c + n);
+  }, [setCount])
 
-  const { data, loading } = useFetch('http://numbersapi.com/' + count);
-
-  useEffect(() => {
-    console.log("render");
-    return (() => {
-      console.log("re-render / unmount");
-    })
-  }, [values.email]);
+  // This will cause Hello and Square to re-render multiple times because increment gets created every single render. So for those components increment is changing every re-render
+  // const increment = n => {
+  //   setCount(c => c + n);
+  // }
 
   return (
     <div className="App">
-      {showHellow && <Hello />}
-      <button onClick={() => toggleHello(!showHellow)}>Toggle Hello</button>
-      Email: <input name="email" value={values.email} onChange={handleChange}></input>
-      First Name: <input name="firstName" value={values.firstName} onChange={handleChange}></input>
-      Password: <input type="password" name="password" value={values.password} onChange={handleChange}></input>
-      <div>
-        Email: {values.email}, Password: {values.password}
-      </div>
-      <p>{!data && loading ? "...loading" : data} </p>
-      <button onClick={() => setCount(count+1)}>increment</button>
+      <Hello increment={increment} />
+      <div>Count: {count}</div>
+      {
+        nums.map(n => <Square increment={increment} n={n} key={n} />)
+      }
     </div>
   );
 }

@@ -1,13 +1,6 @@
-# Notes on React Hook useEffect
+# Notes on React Hook useCallback
 
-1. useEffect by default gets called everytime the component it belongs to gets rendered or re-rendered
-2. The first parameter takes a function which is called every render or based on second parameter
-3. The second parameter takes an array which contains the variables only for which the useEffect needs to be called. useEffect gets called whenever any of those variables get changed. These variables are state variables or props beings passed to the component.
-4. The second parameter limits the call of useEffect based on the variables passed into the array
-5. Passing no values to useEffect makes it call only once
-6. A Cleanup Function can be returned from useEffect which gets called for every re-render
-7. To call a cleanup function only while unmounting, pass an empty array to the second parameter of useEffect
-8. Effects are a good place to add and remove event Listeners
-9. There can be more than one useEffect in a component and they'll be fired off in their lexical order that's top to bottom
-10. useEffect can also be used to carry out complex task like fetching data and updating when it's available. See [App.js](./src/App.js) to see a working example.
-11. useEffect is also a good place to save variables into disk or memory for future use. See [App.js](./src/App.js) for a simple usecase.
+1. useCallback helps memoizing a function ,i.e. the function isn't created again in re-renders if its dependencies aren't changed
+2. It can be used along with React.memo
+3. React.memo is a higher order component (function that take a component and returns a new component). It helps memoizing components based on props. If a component renders the same for the same prop, React.memo will ensure that the componet doesn't gets re-rendered.
+4. Check [App.js](./src/App.js) for an example of how useCallback and React.memo is being utilized to avoid re-rendering.
