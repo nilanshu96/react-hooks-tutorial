@@ -1,5 +1,6 @@
-import {useState, useEffect, useLayoutEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import useFetch from './useFetch';
+import useMeasure from './useMeasure';
 
 const Hello = () => {
 
@@ -12,21 +13,20 @@ const Hello = () => {
     //using initiator function in useState because we don't want to call JSON.parse in every rerenders
     // const [count, setCount] = useState(getInitialValue()); This calls the getInitialValue function in every rerender.
 
-    const divRef = useRef();
-
     useEffect(() => {
         localStorage.setItem("count", JSON.stringify(count));
     }, [count]);
 
     const { data, loading } = useFetch('http://numbersapi.com/' + count);
 
-    useLayoutEffect(() => {
-        console.log(divRef.current.getBoundingClientRect());
-    }, [data]);
+    const [rect, divRef] = useMeasure([data]);
 
     return (
-        <div style={{display: 'flex'}}>
-            <div ref={divRef}>{!data && loading ? "...loading" : data} </div>
+        <div>
+            <div style={{ display: 'flex' }}>
+                <div ref={divRef}>{!data && loading ? "...loading" : data} </div>
+            </div>
+            <pre>{JSON.stringify(rect, null, 2)}</pre>
             <button onClick={() => setCount(count + 1)}>increment</button>
         </div>
     )
