@@ -7,3 +7,5 @@
 3. When the nearest <MyContext.Provider> above the component updates, this Hook will trigger a rerender with the latest context value passed to that MyContext provider. Even if an ancestor uses React.memo or shouldComponentUpdate, a rerender will still happen starting at the component itself using useContext. So a change in the nearest `MyContext.Provider` above the component will always re-render the component no matter what.
 
 4. A component calling useContext will always re-render when the context value changes. If re-rendering the component is expensive, you can optimize it by using memoization. (See [App.js](./src/App.js) on the use of memoization to avoid the change of `providerValue` variable in every re-render)
+
+5. Note on Context: Context contains data that is required by multiple components throughout the application. Context provides a way to share values like these between components without having to explicitly pass a prop through every level of the tree. See [App.js](./src/App.js) for a scenario where the User data needs to be shared with the Home and the About pages.
